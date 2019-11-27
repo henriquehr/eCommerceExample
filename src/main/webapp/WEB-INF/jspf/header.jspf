@@ -1,0 +1,133 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+            
+<c:if test="${!empty language}">
+    <fmt:setLocale value="${language}" scope="session"/>
+</c:if>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="shortcut icon"  href="img/favicon.ico">
+
+        <title>eCommerce</title>
+
+    </head>
+    <body>
+        <div id="main">
+            <div id="header">
+                <div id="widgetBar">
+                    <div class="headerWidget">
+                        <c:if test="${!fn:contains(pageContext.request.servletPath,'/confirmation')}">
+                            <c:choose>
+                                <c:when test="${empty sessionScope['javax.servlet.jsp.jstl.fmt.locale.session']}">
+                                    <c:choose>
+                                        <c:when test="${pageContext.request.locale.language ne 'pt'}">
+                                        english
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:url var="url" value="chooseLanguage">
+                                                <c:param name="language" value="en"/>
+                                            </c:url>
+                                            <div class="bubble"><a href="${url}">english</a></div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    |
+                                    <c:choose>
+                                        <c:when test="${pageContext.request.locale.language eq 'pt'}">
+                                            português
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:url var="url" value="chooseLanguage">
+                                                <c:param name="language" value="pt"/>
+                                            </c:url>
+                                            <div class="bubble"><a href="${url}">português</a></div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:when>
+                                
+                                <c:otherwise>
+                                    <c:choose>
+                                        <c:when test="${sessionScope['javax.servlet.jsp.jstl.fmt.locale.session'] ne 'pt'}">
+                                            english
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:url var="url" value="chooseLanguage">
+                                                <c:param name="language" value="en"/>
+                                            </c:url>
+                                            <div class="bubble"><a href="${url}">english</a></div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    |
+                                    <c:choose>
+                                        <c:when test="${sessionScope['javax.servlet.jsp.jstl.fmt.locale.session'] eq 'pt'}">
+                                            português
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:url var="url" value="chooseLanguage">
+                                                <c:param name="language" value="pt"/>
+                                            </c:url>
+                                            <div class="bubble"><a href="${url}">português</a></div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
+                        
+                    </div>
+
+                    <div class="headerWidget">
+                        <c:if test="${!empty cart && cart.numberOfItems != 0 &&
+                                        !fn:contains(pageContext.request.servletPath,'/checkout') &&
+                                        requestScope['javax.servlet.forward.servlet_path'] ne '/checkout' &&
+
+                                        !fn:contains(pageContext.request.servletPath,'/cart') &&
+                                        requestScope['javax.servlet.forward.servlet_path'] ne '/cart'
+                                    }">
+                        <a href="<c:url value='checkout'/>" class="bubble">
+                            <fmt:message key='proceed to checkout'/> &#x279f;
+                        </a>
+                        </c:if>
+                    </div>
+
+                    <div class="headerWidget" id="viewCart">
+                        <img src="img/cart.gif" alt="shopping cart icon" id="cart">
+                        <span class="horizontalMargin">
+                            <c:choose>
+                                <c:when test="${cart.numberOfItems == null}">
+                                    0
+                                </c:when>
+                                <c:otherwise>
+                                    ${cart.numberOfItems}
+                                </c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                                <c:when test="${cart.numberOfItems == 1}">
+                                    item
+                                </c:when>
+                                <c:otherwise>
+                                    <fmt:message key='items'/>
+                                </c:otherwise>
+                            </c:choose>
+                        </span>
+
+                        <c:if test="${!empty cart && cart.numberOfItems != 0 &&
+                                        !fn:contains(pageContext.request.servletPath,'/cart') &&
+                                        requestScope['javax.servlet.forward.servlet_path'] ne '/cart'
+                                    }">
+                            <a href="<c:url value='viewCart'/>" class="bubble">
+                                <fmt:message key='view cart'/>
+                            </a>
+                        </c:if>
+                    </div>
+                </div>
+                <a href="<c:url value='/'/>">
+                    <img src="img/logo.png" id="logo" alt="eCommerce logo">
+                </a>
+                <img src="img/logoText.png" id="logoText" alt="eCommerce">
+                
+            </div>

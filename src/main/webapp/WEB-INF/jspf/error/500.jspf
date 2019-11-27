@@ -1,0 +1,6 @@
+<p class="error">
+    Oops! An internal error occurred.
+    <br>
+    <br>
+    Please return to our <a href="<c:url value='/'/>">home page</a>.
+</p>

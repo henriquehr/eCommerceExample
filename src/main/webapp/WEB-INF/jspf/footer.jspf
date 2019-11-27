@@ -1,0 +1,14 @@
+        <div id="footer">
+            <br>
+            <hr id="footerDivider">
+            <p id="footerText" class="reallySmallText">
+                <a href="#"><fmt:message key='privacy policy'/></a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#"><fmt:message key='contact'/></a>
+            </p>
+            <div class="reallySmallText">
+                    <a href="<c:url value='/admin/'/>">admin login</a>
+            </div>
+        </div>
+    </body>
+</html>

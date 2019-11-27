@@ -1,0 +1,6 @@
+<p class="error">
+    You don't have permission to access this page.
+    <br>
+    <br>
+    Please return to our <a href="<c:url value='/'/>">home page</a>.
+</p>

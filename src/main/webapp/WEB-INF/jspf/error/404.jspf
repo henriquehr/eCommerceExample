@@ -1,0 +1,6 @@
+<p class="error">
+    We're sorry. The page you requested is unavailable.
+    <br>
+    <br>
+    Please return to our <a href="<c:url value='/'/>">home page</a>.
+</p>
