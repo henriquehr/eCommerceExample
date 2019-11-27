@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Server port="8005" shutdown="SHUTDOWN">
+  <GlobalNamingResources>
+     
+     <Resource name="jdbc/ecommerce" 
+                auth="Container" 
+                type="javax.sql.DataSource"
+                factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+                maxActive="100" 
+                maxIdle="30" 
+                maxWait="10000"
+                driverClassName="com.mysql.cj.jdbc.Driver"
+                url="jdbc:mysql://localhost:3306/ecommerce"
+                username="username" <!-- DB name -->
+                password="password"/> <!-- DB password -->
+
+  </GlobalNamingResources>
+</Server>
