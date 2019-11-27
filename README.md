@@ -1,4 +1,4 @@
-Example from https://netbeans.org/kb/docs/javaee/ecommerce/intro.html
+Simple and ugly e-commerce example from https://netbeans.org/kb/docs/javaee/ecommerce/intro.html
 
 <br>
 
