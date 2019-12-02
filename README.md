@@ -1,4 +1,6 @@
-Simple and ugly e-commerce example from https://netbeans.org/kb/docs/javaee/ecommerce/intro.html
+Simple e-commerce example used to learn back-end dev with JavaEE, ejb, jsp, jpa 
+
+(Ugly front-end)
 
 <br>
 
